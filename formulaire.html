@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire Projet THYP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Décrire un projet de technologie hypermédias</h1>
+  <form action="affichage.php" method="POST">
+    <label for="titre">Titre du projet :</label>
+    <input type="text" id="titre" name="titre" required>
+
+    <label for="auteur">Auteur(s) :</label>
+    <input type="text" id="auteur" name="auteur" required>
+
+    <label for="description">Description :</label>
+    <textarea id="description" name="description" rows="5" required></textarea>
+
+    <label for="technos">Technologies utilisées :</label>
+    <input type="text" id="technos" name="technos">
+
+    <label for="lien">Lien vers le projet :</label>
+    <input type="url" id="lien" name="lien">
+
+    <button type="submit">Envoyer</button>
+  </form>
+</body>
+</html>
