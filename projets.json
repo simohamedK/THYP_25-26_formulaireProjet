@@ -1,0 +1,9 @@
+[
+    {
+        "titre": "test",
+        "auteur": "mohamed",
+        "description": "blbla",
+        "technos": "PHP, HTML",
+        "lien": "http:\/\/test.com"
+    }
+]

@@ -12,7 +12,7 @@
 
     <?php
     $fichier = 'projets.json';
-    $projets = []
+    $projets = [];
     
     if (file_exists($fichier)) {
       $projets = json_decode(file_get_contents($fichier), true);

@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Affichage du projet</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Projet soumis</h1>
-  <div class="projet">
-    <p><strong>Titre :</strong> <?php echo htmlspecialchars($_POST['titre']); ?></p>
-    <p><strong>Auteur(s) :</strong> <?php echo htmlspecialchars($_POST['auteur']); ?></p>
-    <p><strong>Description :</strong><br><?php echo nl2br(htmlspecialchars($_POST['description'])); ?></p>
-    <p><strong>Technologies :</strong> <?php echo htmlspecialchars($_POST['technos']); ?></p>
-    <p><strong>Lien :</strong> <a href="<?php echo htmlspecialchars($_POST['lien']); ?>" target="_blank"><?php echo htmlspecialchars($_POST['lien']); ?></a></p>
-  </div>
-</body>
-</html>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $data = [
+    'titre' => htmlspecialchars($_POST['titre']),
+    'auteur' => htmlspecialchars($_POST['auteur']),
+    'description' => nl2br(htmlspecialchars($_POST['description'])),
+    'technos' => htmlspecialchars($_POST['technos']),
+    'lien' => htmlspecialchars($_POST['lien'])
+  ];
+
+  $fichier = 'projets.json';
+  $projets = file_exists($fichier) ? json_decode(file_get_contents($fichier), true) : [];
+  $projets[] = $data;
+  file_put_contents($fichier, json_encode($projets, JSON_PRETTY_PRINT));
+
+  // Redirection vers la liste
+  header("Location: liste.php");
+  exit;
+}
+?>
